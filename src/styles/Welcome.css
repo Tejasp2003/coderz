@@ -1,0 +1,34 @@
+/* .sp1{
+    align-items: center;
+   justify-content: center;
+   margin-left: 200px;
+} 
+.sp1 h1{
+    color: #fab179;
+    
+}
+.sp1 h5{
+    color: #B6E2A1;
+}
+.sp1 h3{
+    color: #B6E2A1;
+}
+.sp1 button{
+    border-radius: 3px;
+    height: 35px;
+    background-color: #C0EEE4;
+    cursor: pointer;
+}
+.sp3{
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+}
+.sp2 img{
+    height: 450px;
+    width: 550px;
+    margin-left: 300px;
+    contain: content;
+} */

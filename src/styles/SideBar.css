@@ -1,0 +1,291 @@
+.container {
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  width: 280px;
+ position: fixed;
+ 
+  left: -1px;
+  /* margin-left: -363px; */
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  /* background: rgba(0, 0, 0, 0.8);
+   */
+   background: #223243;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.7px);
+  -webkit-backdrop-filter: blur(7.7px);
+  /* border-right: 3px solid rgb(0, 0, 0); */
+
+  box-shadow: -3px -3px 10px rgba(255, 255, 255, 0.1),
+  3px 3px 10px rgba(0, 0, 0, 0.35),
+  inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  border: 8px solid #223243;
+  
+}
+.logo {
+  align-self: center;
+  font-size: 23px;
+  font-family: cursive;
+  letter-spacing: 2px;
+  color: #04fffd;
+  /* border-bottom: 2px solid #04fffd; */
+}
+.border-line{
+  position: absolute;
+  border-bottom: 2px solid #04fffd;
+  top:82px;
+  left: 18px;
+  /* background: #000; */
+  width: 222px;
+  height: 1px;
+}
+
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+  5px 5px 15px rgba(0, 0, 0, 0.35),
+  inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  border: 8px solid #223243; */
+  padding: 20px;
+  margin-top: 10px;
+  overflow: hidden;
+  
+}
+/* .wrap__icon{
+  color: #04fffd;
+  position: absolute;
+  top: 100px;
+  left: 250px;
+  font-size: 30px;
+  background: #000;
+  border-radius: 50px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  
+} */
+
+.create-post {
+  padding: 8px 0;
+  padding-bottom: 20px;
+}
+.create-post-btn {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+ 
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 130px;
+  height: 30px;
+ 
+  color: #000000;
+  font-weight: bolder;
+  text-align: center;
+  letter-spacing: 0.6px;
+  box-shadow: 3px 5px 13px -3px rgba(0, 0, 0, 0.57);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+}
+.create {
+  align-self: center;
+  margin-left: 8px;
+  font-size: 15px;
+}
+.create-post-btn:hover {
+  transition: 100ms ease-in-out;
+  /* box-shadow: 3px 5px 22px 5px rgba(0,0,0,0.84); */
+  box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.64);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+
+  /* background-color: rgba(248, 247, 247, 0.5); */
+  width: 220px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.search input {
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  width: 100%;
+  background: transparent;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.search input::placeholder {
+  color:rgba(0, 0, 0, 0.5);
+  font-weight: bolder;
+}
+.items-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  /* box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+  5px 5px 15px rgba(0, 0, 0, 0.35),
+  inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+   border: 8px solid #223243; 
+  padding: 20px; */
+}
+
+
+.items-list button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  /* border-radius: 20px; */
+  width: 200px;
+  height: 35px;
+  color: #04fffd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  font-size: 20px;
+  padding-left: 20px;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  /* border-bottom: 1px solid  rgba(4, 255, 253, 0.1); */
+ 
+}
+.active{
+
+  transition: 100ms ease-in-out;
+  /* box-shadow: 3px 5px 22px 5px rgba(0, 0, 0, 0.84); */
+  box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #000000 !important;
+  border-radius: 20px;
+}
+
+
+.items-list button:hover {
+  transition: 200ms ease-in-out;
+  box-shadow: 3px 5px 22px 5px rgba(0, 0, 0, 0.84);
+  box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 0px 18px 29px 5px rgba(0, 0, 0, 0.64);
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #000000;
+  border-radius: 20px;
+}
+
+.items-list button span {
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+
+.home-icon {
+  height: 25px;
+  width: 25px;
+  /* color: #57FF19; */
+}
+.events-icon {
+  height: 25px;
+  width: 25px;
+  /* color: #57FF19; */
+}
+.notifications-icon {
+  height: 25px;
+  width: 25px;
+  /* color: #57FF19; */
+}
+.profile-icon {
+  height: 25px;
+  width: 25px;
+  /* color: #57FF19; */
+}
+.settings-icon {
+  height: 25px;
+  width: 25px;
+  /* color: #57FF19; */
+}
+.projects-icon{
+  height: 25px;
+  width: 25px;
+  font-weight: bolder;
+}
+
+.logout-icon {
+  height: 25px;
+  width: 25px;
+}
+.logout {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-top: 40px;
+}
+.logout-btn {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 20px;
+  width: 150px;
+  height: 35px;
+  /* color: rgb(0, 0, 0); */
+  /* color: #006665; */
+  color: #04fffd;
+  /* box-shadow: 3px 5px 13px -3px rgba(0, 0, 0, 0.57); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 20px;
+  /* padding-left: 20px; */
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  transition: 100ms ease-in-out;
+  box-shadow: 3px 5px 10px 5px rgba(0, 0, 0, 0.3);
+ 
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #000000;
+  /* width: 240px; */
+}
+.logout-btn:hover {
+  width: fit-content;
+ 
+}
+
+.logout-btn span {
+  margin-left: 15px;
+  font-size: 15px;
+}
