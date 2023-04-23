@@ -1,8 +1,8 @@
 import { auth, storage, db } from "../firebase";
-import { addDoc, collection, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { v4 } from "uuid";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import Post from "./Post";
 
@@ -21,9 +21,12 @@ function Postdemo() {
 
   let imageURL = "";
   const setPostDetails = async () => {
+    if(image===null){
+      toast.error("Please select an image")
+      return;
+    }
     if (image !== null) {
       await uploadBytes(imagesRef, image).then((snapshot) => {
-        // console.log("Uploaded a blob or file!");
         toast.success("Image uploaded successfully")
       });
     }

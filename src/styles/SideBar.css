@@ -289,3 +289,71 @@
   margin-left: 15px;
   font-size: 15px;
 }
+
+.addPostBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  width: 160px;
+  height: 35px;
+  color: #04fffd;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 20px;
+  margin-bottom: 30px;
+
+}
+.addPostBtn:hover{
+  transition:ease-in-out;
+  transition-duration: 0.1s;
+  transform: scale(1.1);
+}
+
+.addIcon{
+  height: 25px;
+  width: 25px;
+  
+}
+.modal{
+  
+  background-color: rgb(255, 255, 255);
+  width: 280px;
+ position: fixed;
+ 
+ 
+
+  top: 20;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.7px);
+  -webkit-backdrop-filter: blur(7.7px);
+  background-color: rgba(255, 255, 255, 0.5);
+
+  box-shadow: -3px -3px 10px rgba(255, 255, 255, 0.1),
+  3px 3px 10px rgba(0, 0, 0, 0.35),
+  inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  border: 8px solid #223243;
+  
+
+}
+.modal-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+

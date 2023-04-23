@@ -2,8 +2,6 @@ import React from "react";
 import SignUp from "./components/SignUp.jsx";
 import Login from "./components/Login.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import Welcome from "./components/Welcome.jsx";
 import Notification from "./components/Notification.jsx";
 import Profile from "./components/Profile.jsx";
 import Events from "./components/Events.jsx";
@@ -11,9 +9,9 @@ import Settings from "./components/Settings.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Project from "./components/Project.jsx";
 import Postdemo from "./components/Postdemo.jsx";
 import Post from "./components/Post.jsx";
+import About from "./components/About.jsx";
 
 
 function App() {
@@ -42,9 +40,10 @@ function App() {
           <Route exact path="/events" element={<Events />} />
           <Route exact path="/settings" element={<Settings />} />
           <Route exact path="/ForgotPassword" element={<ForgotPassword />} />
-          <Route exact path="/projects" element={<Project />} />
+          
           <Route exact path="/home" element={<Postdemo />} />
           <Route exact path="/post" element={<Post />} />
+          <Route exact path="/about" element={<About />} />
           
         </Routes>
       </Router>

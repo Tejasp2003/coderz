@@ -97,14 +97,12 @@ function Post(props) {
                   />
                   <div className="name__username">
                     <span className="name__user">{props.userName}</span>
-                    <span className="Username">@purvi123</span>
+                  
                   </div>
                 </div>
               </div>
               <div className="postTopRight">
-                <div className="post__date">
-                  <span className="postdate__span">17-jan-2023</span>
-                </div>
+               
                 <div
                   className="more__icon"
                   onClick={() => {
@@ -285,9 +283,7 @@ function Post(props) {
                 </span>
               </div>
             </div>
-            <div className="postText">
-              <span>{props.description}</span>
-            </div>
+            
           </div>
         </div>
       </Container>

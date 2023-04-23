@@ -1,23 +1,37 @@
 import { useState } from "react";
 import "../styles/SideBar.css";
 import { AiOutlineSetting } from "react-icons/ai";
-// import { FaSearch } from "react-icons/fa";
-import {
-  MdOutlineNotificationsActive,
-  MdOutlineEditCalendar,
-} from "react-icons/md";
-import { IoIosAddCircle } from "react-icons/io";
-import { SlFolderAlt } from "react-icons/sl";
-import { HiOutlineHome, HiHome } from "react-icons/hi";
+import { IoMdAddCircle } from "react-icons/io";
+import { MdOutlineEditCalendar } from "react-icons/md";
+import { HiAcademicCap, HiOutlineHome } from "react-icons/hi";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-import { AiOutlineLeft } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
+import {  storage, db } from "../firebase";
+import { addDoc, collection, doc, getDocs } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { v4 } from "uuid";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import Post from "./Post";
+
+import { toast } from "react-toastify";
+import { onSnapshot } from "firebase/firestore";
+import Modal from "./Modal";
 
 function SideBar() {
-  const [isActive, setIsActive] = useState(false);
+  const [allImagesURL, setAllImagesURL] = useState([]);
+  const [image, setImage] = useState([]);
+  const user = auth.currentUser;
+  const [items, setItems] = useState([]);
+  const postId = user?.displayName + v4();
+  const imageName = image?.name + v4();
+  const userID = user?.uid;
+  const imagesRef = ref(storage, `post/${userID}/${postId}/${imageName}`);
+
+  let imageURL = "";
+  const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   function checkActiveRoute(route) {
     if (location.pathname === route) {
@@ -35,33 +49,115 @@ function SideBar() {
   };
 
   const navigate = useNavigate();
+
+
+
+
+
+  const setPostDetails = async () => {
+    if (image !== null) {
+      await uploadBytes(imagesRef, image).then((snapshot) => {
+        toast.success("Image uploaded successfully")
+      });
+    }
+    await getDownloadURL(
+      ref(storage, `post/${userID}/${postId}/${imageName}`)
+    ).then((url) => {
+      imageURL = url;
+
+      setAllImagesURL([...allImagesURL, imageURL]);
+    });
+
+    await onAuthStateChanged(auth, (user) => {
+      if (user) {
+       
+
+
+        addDoc(collection(db, `post/`), {
+          userId: user.uid,
+          userName: user.displayName,
+          postId: postId,
+          description: "hello 1 post content",
+          createdAt: new Date().toISOString(),
+          postImageUrl: imageURL,
+          likes: [],
+          comments: [
+            {
+              
+            }
+          ],
+        });
+      } else {
+      }
+    });
+    setImage(null);
+  };
+  const postCollection = collection(db, "post");
+
+  onSnapshot(
+    postCollection,
+    (querySnapshot) => {
+      const postList = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setItems(postList);
+    }
+  )
+
+
+
+
+
+
+
+
+
+  
   return (
     <div className="container">
+    
       <div className="logo">
         <h1>Coders</h1>
       </div>
-      {/* <div className="wrap__icon">
-        <AiOutlineLeft/>
-      </div> */}
 
       <div className="border-line"></div>
       <div className="items">
-        {/* <div className="create-post">
-          <button className="create-post-btn">
-            <IoIosAddCircle /> <span className="create">Create</span>
-          </button>
-        </div> */}
-        {/* <div className="search">
-          <FaSearch /> <input type="text" placeholder="Search..." />
-        </div> */}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Upload Image</h2>
+            <form onSubmit={setPostDetails}>
+              <label htmlFor="file-input">Choose file:</label>
+              <input type="file" id="file-input" onChange={(e) => setImage(e.target.files[0])} />
+              <button type="submit">Submit</button>
+            </form>
+            <button onClick={() => setShowModal(false)} className="close-button">X</button>
+          </div>
+        </div>
+      )}
         <div className="items-list">
-          <button className={checkActiveRoute("/home")?"active": ""}
+      <div className="addPostBtn"
+
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+      
+          <IoMdAddCircle className="addIcon" />
+          <span>Add Post</span>
+        
+      </div>
+      
+   
+
+          <button
+            className={checkActiveRoute("/home") ? "active" : ""}
             onClick={() => {
               // setIsActive(true)
 
               navigate("/home");
             }}
-            
           >
             <HiOutlineHome className="home-icon" />
 
@@ -73,18 +169,10 @@ function SideBar() {
             }}
             className={checkActiveRoute("/events") && "active"}
           >
-            <MdOutlineEditCalendar className="events-icon" />{" "}
-            <span>Events</span>
+            <HiAcademicCap className="events-icon" />{" "}
+            <span>Learn</span>
           </button>
-          <button
-            onClick={() => {
-              navigate("/notifications");
-            }}
-            className={checkActiveRoute("/notifications") && "active"}
-          >
-            <MdOutlineNotificationsActive className="notifications-icon" />{" "}
-            <span>Notifications </span>
-          </button>
+
           <button
             onClick={() => {
               navigate("/profile");
@@ -93,21 +181,14 @@ function SideBar() {
           >
             <CgProfile className="profile-icon" /> <span> Profile</span>
           </button>
+
           <button
             onClick={() => {
-              navigate("/projects");
-            }}
-            className={checkActiveRoute("/projects") && "active"}
-          >
-            <SlFolderAlt className="projects-icon" /> <span>My Project</span>
-          </button>
-          <button
-            onClick={() => {
-              navigate("/settings");
+              navigate("/about");
             }}
             className={checkActiveRoute("/settings") && "active"}
           >
-            <AiOutlineSetting className="settings-icon" /> <span>Settings</span>
+            <AiOutlineSetting className="settings-icon" /> <span>About</span>
           </button>
         </div>
         <div className="logout">
